@@ -1,0 +1,121 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+:root {
+    --body-bg-color: #EFF1FF;
+    --caption-bg-color: #eebde4;
+    --h1-bg-color: #bfabce;
+    --header-bg-color: #8E9AAF;
+    --text-color: #4A4E69;
+    --ff-p: "Palanquin", "sans-serif";
+    --ff-accent: "Staatliches", "cursive";
+}
+
+header {
+    background-color: var(--header-bg-color);
+    height: 280px;
+}
+
+header>img {
+    display: block;
+    margin: 0 auto 2rem;
+    padding-top: 2rem;
+    height: 136px;
+    width: 136px;
+}
+
+h1 {
+    background-color: var(--h1-bg-color);
+    color: #FFF;
+    font: 2.5rem var(--ff-accent);
+    letter-spacing: 0.05em;
+    text-align: center;
+    text-shadow: 0 2px 2px #000040;
+    text-transform: uppercase;
+    margin: 32px auto;
+}
+
+p {
+    grid-area: 1 / 1 / 2 / -1;
+    font: 400 1.25rem / 1.5 var(--ff-p);
+    text-align: center;
+    color: #23053A;
+    margin: 0px auto 28px;
+    max-width: 90%;
+}
+
+main {
+    display: grid;
+    gap: 36px;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    grid-auto-flow: row;
+    justify-items: center;
+    justify-content: space-around;
+    align-items: center;
+    margin: 32px auto;
+    padding: 0 clamp(16px, 10vw, 80px);
+    max-width: 1500px;
+}
+
+figure {
+    cursor: pointer;
+    margin: 0 auto;
+    position: relative;
+}
+
+figcaption {
+    background-color: var(--caption-bg-color);
+    border-radius: 20px;
+    color: var(--text-color);
+    font: 1.25rem / 1.7 var(--ff-accent);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 0 1.5rem;
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    opacity: 0;
+    animation: caption-fall 0.8s linear 0.4s;
+    animation-fill-mode: forwards;
+}
+
+img:not(header img) {
+    animation: sweet-imgs-in 1.2s ease-in-out;
+    width: min(100vw, 400px);
+    border-radius: 20px;
+}
+
+img:hover:not(header img) {
+    filter: contrast(0.75);
+}
+
+@keyframes sweet-imgs-in {
+    from {
+        opacity: 0;
+    }
+
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes caption-fall {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0px);
+    }
+}
+
+@media (max-width: 360px) {
+    main {
+        grid-template-columns: 1fr;
+    }
+}
